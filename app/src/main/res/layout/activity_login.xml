@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_registry"
+                android:text="@string/action_signup"
                 android:textStyle="bold" />
 
         </LinearLayout>
