@@ -38,10 +38,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         reg_email_field = findViewById(R.id.email);
         reg_pass_field = findViewById(R.id.password);
-        reg_confirm_pass_field = findViewById(R.id.reg_confirm_pass);
-        reg_btn = findViewById(R.id.reg_btn);
-        reg_login_btn = findViewById(R.id.reg_login_btn);
-        reg_progress = findViewById(R.id.reg_progress);
+        reg_confirm_pass_field = findViewById(R.id.confirm_password);
+        reg_btn = findViewById(R.id.email_registry_button);
+        /*reg_login_btn = findViewById(R.id.reg_login_btn);
+
+        reg_progress = findViewById(R.id.reg_progress);*/
 
         reg_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 if(task.isSuccessful()){
 
-                                    Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
+                                    Intent setupIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     startActivity(setupIntent);
                                     finish();
 
