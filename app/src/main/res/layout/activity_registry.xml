@@ -94,6 +94,44 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Gender" />
+
+                <RadioButton
+                    android:id="@+id/btn_mail"
+                    style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    tools:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/btn_feale"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Femail"
+                    tools:text="Femail" />
+
+                <RadioButton
+                    android:id="@+id/btn_none"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    tools:text="None" />
+            </RadioGroup>
+
             <Button
                 android:id="@+id/email_registry_button"
                 style="?android:textAppearanceSmall"
