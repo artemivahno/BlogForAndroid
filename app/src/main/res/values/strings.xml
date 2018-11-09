@@ -12,7 +12,9 @@
     <string name="prompt_сpassword">Confirm Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_signup">Sign up</string>
+    <string name="new_post_btn_hint">Add New Post ...</string>
     <string name="action_name">Enter your Name</string>
     <string name="action_surname">Enter your Surname</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="post_desc_hint">Type Your Post ...</string>
 </resources>
