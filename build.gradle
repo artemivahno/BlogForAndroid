@@ -23,6 +23,22 @@ allprojects {
     }
 }
 
+def overrideDependencies = { Project project ->
+    project.configurations.all {
+        // See https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.ResolutionStrategy.html
+        resolutionStrategy {
+            eachDependency { DependencyResolveDetails details ->
+                String overrideVersion = versionOverrides.get(details.requested.group + ":" + details.requested.name)
+                if (overrideVersion != null && details.requested.version != overrideVersion) {
+                    logger.debug("Overriding dependency ${details.requested.group}:${details.requested.name} " +
+                            "version ${details.requested.version} --> $overrideVersion")
+                    details.useVersion overrideVersion
+                }
+            }
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,7 +23,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText reg_confirm_pass_field;
     private Button reg_btn;
     private Button reg_login_btn;
-    private ProgressBar reg_progress;
 
     private FirebaseAuth mAuth;
 
@@ -40,20 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
         reg_pass_field = findViewById(R.id.password);
         reg_confirm_pass_field = findViewById(R.id.confirm_password);
         reg_btn = findViewById(R.id.email_registry_button);
-        /*reg_login_btn = findViewById(R.id.reg_login_btn);
 
-        reg_progress = findViewById(R.id.reg_progress);*/
-
-        reg_login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-
-            }
-        });
 
         reg_btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -64,8 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) & !TextUtils.isEmpty(confirm_pass)){
 
                     if(pass.equals(confirm_pass)){
-
-                        reg_progress.setVisibility(View.VISIBLE);
 
                         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -83,8 +69,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
 
                                 }
-
-                                reg_progress.setVisibility(View.INVISIBLE);
 
                             }
                         });
@@ -115,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
+
 
     private void sendToMain() {
 
