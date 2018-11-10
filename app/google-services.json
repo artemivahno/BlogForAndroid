@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "17167745855",
-    "firebase_url": "https://first-project-d816f.firebaseio.com",
-    "project_id": "first-project-d816f",
-    "storage_bucket": "first-project-d816f.appspot.com"
+    "project_number": "629454032556",
+    "firebase_url": "https://firsttest-3bcf0.firebaseio.com",
+    "project_id": "firsttest-3bcf0",
+    "storage_bucket": "firsttest-3bcf0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:17167745855:android:eb134b69bc6ad402",
+        "mobilesdk_app_id": "1:629454032556:android:eb134b69bc6ad402",
         "android_client_info": {
           "package_name": "com.blog.artsiom.myblogapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "17167745855-avn6k67190p585oha0ogrtrqi1i98d19.apps.googleusercontent.com",
+          "client_id": "629454032556-pqtma4dvjs78k1ita1sd25ujfd8s40ti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blog.artsiom.myblogapplication",
+            "certificate_hash": "f028b3e14cf75b04d448e59f880f742e355137e9"
+          }
+        },
+        {
+          "client_id": "629454032556-drs1li2q51qnbvb95fji30cmspekr3ge.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDb8fbIgwjp10H4eE_cH4P_dfxegPX1xfg"
+          "current_key": "AIzaSyBwjPMjlEZNyDCNh2oaVlD5HKLOdtD2oRM"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629454032556-drs1li2q51qnbvb95fji30cmspekr3ge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
