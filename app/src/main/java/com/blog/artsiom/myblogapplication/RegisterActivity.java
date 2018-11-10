@@ -29,9 +29,12 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText setupSurname;
     private Button reg_btn;
     private Button reg_login_btn;
+    private Button modyfy_btn;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,13 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
+
         reg_email_field = findViewById(R.id.email);
         reg_pass_field = findViewById(R.id.password);
         reg_confirm_pass_field = findViewById(R.id.confirm_password);
         reg_btn = findViewById(R.id.email_registry_button);
+        modyfy_btn = findViewById(R.id.modyfy_btn);
+
 
 
         reg_btn.setOnClickListener(new View.OnClickListener() {
@@ -52,44 +58,55 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 String email = reg_email_field.getText().toString();
                 String pass = reg_pass_field.getText().toString();
                 String confirm_pass = reg_confirm_pass_field.getText().toString();
                 final String user_name = setupName.getText().toString();
                 final String user_surname = setupSurname.getText().toString();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirm_pass) && !TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(user_surname)){
 
-                    if(pass.equals(confirm_pass)){
+                if(currentUser != null) {
 
-                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                    reg_btn.setEnabled(false);
+                    modyfy_btn.setEnabled(true);
+                }
+                else {
 
-                                if(task.isSuccessful()){
+                    if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirm_pass) && !TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(user_surname)) {
 
-                                    Intent setupIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(setupIntent);
-                                    storeFirestore(user_name, user_surname);
-                                    finish();
+                        if (pass.equals(confirm_pass)) {
 
-                                } else {
+                            mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                    String errorMessage = task.getException().getMessage();
-                                    Toast.makeText(RegisterActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                    if (task.isSuccessful()) {
+
+                                        Intent setupIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        startActivity(setupIntent);
+                                        storeFirestore(user_name, user_surname);
+                                        finish();
+
+                                    } else {
+
+                                        String errorMessage = task.getException().getMessage();
+                                        Toast.makeText(RegisterActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+
+                                    }
 
                                 }
+                            });
 
-                            }
-                        });
+                        } else {
 
-                    } else {
+                            Toast.makeText(RegisterActivity.this, "Confirm Password and Password Field doesn't match.", Toast.LENGTH_LONG).show();
 
-                        Toast.makeText(RegisterActivity.this, "Confirm Password and Password Field doesn't match.", Toast.LENGTH_LONG).show();
-
+                        }
                     }
-                }
 
+                }
 
             }
         });
@@ -109,13 +126,15 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        modyfy_btn = findViewById(R.id.modyfy_btn);
+        modyfy_btn.setEnabled(false);
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        /*if(currentUser != null){
 
             sendToMain();
 
-        }
+        }*/
 
     }
 

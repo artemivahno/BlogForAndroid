@@ -112,6 +112,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
+<!--
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -149,6 +150,7 @@
                     android:text="None"
                     tools:text="None" />
             </RadioGroup>
+-->
 
             <Button
                 android:id="@+id/email_registry_button"
@@ -157,6 +159,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_signup"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/modyfy_btn"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_modyfy"
                 android:textStyle="bold" />
 
         </LinearLayout>
