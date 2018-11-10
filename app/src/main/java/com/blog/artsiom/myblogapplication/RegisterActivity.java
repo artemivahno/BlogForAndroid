@@ -17,11 +17,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText reg_email_field;
     private EditText reg_pass_field;
     private EditText reg_confirm_pass_field;
+    private EditText setupName;
+    private EditText setupSurname;
     private Button reg_btn;
     private Button reg_login_btn;
 
@@ -50,8 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = reg_email_field.getText().toString();
                 String pass = reg_pass_field.getText().toString();
                 String confirm_pass = reg_confirm_pass_field.getText().toString();
+                final String user_name = setupName.getText().toString();
+                final String user_surname = setupSurname.getText().toString();
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) & !TextUtils.isEmpty(confirm_pass)){
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirm_pass) && !TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(user_surname)){
 
                     if(pass.equals(confirm_pass)){
 
@@ -63,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     Intent setupIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     startActivity(setupIntent);
+                                    storeFirestore(user_name, user_surname);
                                     finish();
 
                                 } else {
@@ -88,6 +96,15 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
+
+    private void storeFirestore(String user_name, String user_surname) {
+
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("name", user_name);
+        userMap.put("surname", user_surname);
+
+    }
+
 
     @Override
     protected void onStart() {
