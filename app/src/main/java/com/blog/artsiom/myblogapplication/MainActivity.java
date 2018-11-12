@@ -90,6 +90,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_add) {
 
+            Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+            startActivity(newPostIntent);
+
         } else if (id == R.id.nav_profile) {
 
             sendToLogin();
